@@ -2,10 +2,22 @@ import fs 			from 'fs';
 import geojsonvt 	from 'geojson-vt';
 
 console.log("Start parsing zipCode");
-const zipCodeJson = JSON.parse(fs.readFileSync(__dirname + '/../../geojsonData/state.geo.json'))
-console.log("Successfully parsed parsing zipCode");
+// const zipCodeJson = JSON.parse(fs.readFileSync(__dirname + '/../../geojsonData/state.geo.json'))
+var data = 0;
 
-const zipCodeTiles = geojsonvt(zipCodeJson, {
+var readStream = fs.createReadStream(__dirname + '/../../geojsonData/zcta5.geo.json', 'utf8');
+
+readStream.on('data', function(chunk) {
+	
+	data += chunk
+    
+}).on('end', function() {
+    // const res = JSON.parse(data)
+    console.log("Successfully parsed parsing zipCode");
+});
+
+
+const zipCodeTiles = geojsonvt(data, {
     maxZoom: 12,  // max zoom to preserve detail on; can't be higher than 24
 	tolerance: 2, // simplification tolerance (higher means simpler)
 	extent: 4096, // tile extent (both width and height)

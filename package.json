@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon api/start.js",
+    "startCNSM":"node --max_old_space_size=3072 api/start.js",
     "startHerocu": "yarn install && node api/start.js"
   },
   "repository": {

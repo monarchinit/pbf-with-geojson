@@ -12,7 +12,7 @@ const countyTiles = geojsonvt(countyJson, {
 	buffer: 128,   // tile buffer on each side
 	debug: 1,     // logging level (0 to disable, 1 or 2)
 	lineMetrics: false, // whether to enable line metrics tracking for LineString/MultiLineString features
-	promoteId: 'GEOID10',    // name of a feature property to promote to feature.id. Cannot be used with `generateId`
+	promoteId: 'ID_FOR_VECTOR_FEATURE',    // name of a feature property to promote to feature.id. Cannot be used with `generateId`
 	generateId: false,  // whether to generate feature ids. Cannot be used with `promoteId`
 	indexMaxZoom: 5,       // max zoom in the initial tile index
 	indexMaxPoints: 100000, // max number of points per tile in the index

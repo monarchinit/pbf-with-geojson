@@ -4,7 +4,7 @@ import geojsonvt 	from 'geojson-vt';
 
 const optionsVT = {
 		maxZoom: 12,  // max zoom to preserve detail on; can't be higher than 24
-		tolerance: 20, // simplification tolerance (higher means simpler)
+		tolerance: 15, // simplification tolerance (higher means simpler)
 		extent: 4096, // tile extent (both width and height)
 		buffer: 128,   // tile buffer on each side
 		debug: 1,     // logging level (0 to disable, 1 or 2)

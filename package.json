@@ -1,12 +1,11 @@
 {
-  "name": "goit_bc16_final",
+  "name": "geojson-to-pbf",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon api/start.js",
-    "startHerocu": "yarn install && node api/start.js"
+    "startCNSM":"node --max_old_space_size=3072 api/start.js",
+    "syncID":"node scripts/synhronizationIdFeatures.js"
   },
   "repository": {
     "type": "git"

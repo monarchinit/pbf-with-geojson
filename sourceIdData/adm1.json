@@ -1,0 +1,263 @@
+{
+    "polyTilesetName": "mapbox.boundaries-adm1-v3",
+    "pointLayerName": "points_admin_1",
+    "polyLayerName": "boundaries_admin_1",
+    "description": "state",
+    "all": {
+        "70377": {
+            "name": "Alabama",
+            "code": "01",
+            "wikidata_id": "Q173"
+        },
+        "135913": {
+            "name": "Alaska",
+            "code": "02",
+            "wikidata_id": "Q797"
+        },
+        "201449": {
+            "name": "Arizona",
+            "code": "04",
+            "wikidata_id": "Q816"
+        },
+        "266985": {
+            "name": "Arkansas",
+            "code": "05",
+            "wikidata_id": "Q1612"
+        },
+        "332521": {
+            "name": "California",
+            "code": "06",
+            "wikidata_id": "Q99"
+        },
+        "398057": {
+            "name": "Colorado",
+            "code": "08",
+            "wikidata_id": "Q1261"
+        },
+        "463593": {
+            "name": "Connecticut",
+            "code": "09",
+            "wikidata_id": "Q779"
+        },
+        "529129": {
+            "name": "Delaware",
+            "code": "10",
+            "wikidata_id": "Q1393"
+        },
+        "594665": {
+            "name": "District of Columbia",
+            "code": "11",
+            "wikidata_id": "Q3551781"
+        },
+        "660201": {
+            "name": "Florida",
+            "code": "12",
+            "wikidata_id": "Q812"
+        },
+        "725737": {
+            "name": "Georgia",
+            "code": "13",
+            "wikidata_id": "Q1428"
+        },
+        "791273": {
+            "name": "Hawaii",
+            "code": "15",
+            "wikidata_id": "Q782"
+        },
+        "856809": {
+            "name": "Idaho",
+            "code": "16",
+            "wikidata_id": "Q1221"
+        },
+        "922345": {
+            "name": "Illinois",
+            "code": "17",
+            "wikidata_id": "Q1204"
+        },
+        "987881": {
+            "name": "Indiana",
+            "code": "18",
+            "wikidata_id": "Q1415"
+        },
+        "1053417": {
+            "name": "Iowa",
+            "code": "19",
+            "wikidata_id": "Q1546"
+        },
+        "1118953": {
+            "name": "Kansas",
+            "code": "20",
+            "wikidata_id": "Q1558"
+        },
+        "1184489": {
+            "name": "Kentucky",
+            "code": "21",
+            "wikidata_id": "Q1603"
+        },
+        "1250025": {
+            "name": "Louisiana",
+            "code": "22",
+            "wikidata_id": "Q1588"
+        },
+        "1315561": {
+            "name": "Maine",
+            "code": "23",
+            "wikidata_id": "Q724"
+        },
+        "1381097": {
+            "name": "Maryland",
+            "code": "24",
+            "wikidata_id": "Q1391"
+        },
+        "1446633": {
+            "name": "Massachusetts",
+            "code": "25",
+            "wikidata_id": "Q771"
+        },
+        "1512169": {
+            "name": "Michigan",
+            "code": "26",
+            "wikidata_id": "Q1166"
+        },
+        "1577705": {
+            "name": "Minnesota",
+            "code": "27",
+            "wikidata_id": "Q1527"
+        },
+        "1643241": {
+            "name": "Mississippi",
+            "code": "28",
+            "wikidata_id": "Q1494"
+        },
+        "1708777": {
+            "name": "Missouri",
+            "code": "29",
+            "wikidata_id": "Q1581"
+        },
+        "1774313": {
+            "name": "Montana",
+            "code": "30",
+            "wikidata_id": "Q1212"
+        },
+        "1839849": {
+            "name": "Nebraska",
+            "code": "31",
+            "wikidata_id": "Q1553"
+        },
+        "1905385": {
+            "name": "Nevada",
+            "code": "32",
+            "wikidata_id": "Q1227"
+        },
+        "1970921": {
+            "name": "New Hampshire",
+            "code": "33",
+            "wikidata_id": "Q759"
+        },
+        "2036457": {
+            "name": "New Jersey",
+            "code": "34",
+            "wikidata_id": "Q1408"
+        },
+        "2101993": {
+            "name": "New Mexico",
+            "code": "35",
+            "wikidata_id": "Q1522"
+        },
+        "2167529": {
+            "name": "New York",
+            "code": "36",
+            "wikidata_id": "Q1384"
+        },
+        "2233065": {
+            "name": "North Carolina",
+            "code": "37",
+            "wikidata_id": "Q1454"
+        },
+        "2298601": {
+            "name": "North Dakota",
+            "code": "38",
+            "wikidata_id": "Q1207"
+        },
+        "2364137": {
+            "name": "Ohio",
+            "code": "39",
+            "wikidata_id": "Q1397"
+        },
+        "2429673": {
+            "name": "Oklahoma",
+            "code": "40",
+            "wikidata_id": "Q1649"
+        },
+        "2495209": {
+            "name": "Oregon",
+            "code": "41",
+            "wikidata_id": "Q824"
+        },
+        "2560745": {
+            "name": "Pennsylvania",
+            "code": "42",
+            "wikidata_id": "Q1400"
+        },
+        "2626281": {
+            "name": "Rhode Island",
+            "code": "44",
+            "wikidata_id": "Q1387"
+        },
+        "2691817": {
+            "name": "South Carolina",
+            "code": "45",
+            "wikidata_id": "Q1456"
+        },
+        "2757353": {
+            "name": "South Dakota",
+            "code": "46",
+            "wikidata_id": "Q1211"
+        },
+        "2822889": {
+            "name": "Tennessee",
+            "code": "47",
+            "wikidata_id": "Q1509"
+        },
+        "2888425": {
+            "name": "Texas",
+            "code": "48",
+            "wikidata_id": "Q1439"
+        },
+        "2953961": {
+            "name": "Utah",
+            "code": "49",
+            "wikidata_id": "Q829"
+        },
+        "3019497": {
+            "name": "Vermont",
+            "code": "50",
+            "wikidata_id": "Q16551"
+        },
+        "3085033": {
+            "name": "Virginia",
+            "code": "51",
+            "wikidata_id": "Q1370"
+        },
+        "3150569": {
+            "name": "Washington",
+            "code": "53",
+            "wikidata_id": "Q1223"
+        },
+        "3216105": {
+            "name": "West Virginia",
+            "code": "54",
+            "wikidata_id": "Q1371"
+        },
+        "3281641": {
+            "name": "Wisconsin",
+            "code": "55",
+            "wikidata_id": "Q1537"
+        },
+        "3347177": {
+            "name": "Wyoming",
+            "code": "56",
+            "wikidata_id": "Q1214"
+        }
+    }
+}

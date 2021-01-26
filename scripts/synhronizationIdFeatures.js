@@ -1,104 +1,88 @@
 const fs = require("fs");
-const path = require('path');
+const path = require("path");
 
-function synhronizationStateId() {
-    const stateDataJSON = JSON.parse(fs.readFileSync(path.join(__dirname , '..\\sourceIdData\\adm1.json'),"utf8")) 
-    const stateGEOJSON = JSON.parse(fs.readFileSync(path.join(__dirname , '..\\geojsonData\\state.geo.json'),"utf8")) 
+function synchronization(features, idJson, outputName, isFeature = false) {
+    const idData = Object.entries(idJson.all);
 
-    function findID (zipCode) {
-        const data = Object.entries(stateDataJSON.all) 
-        return parseInt( (data.find(el=>el[1].code===zipCode)||[0])[0] ,10 ) 
+    function findID(zipCode) {
+        return parseInt(
+            (idData.find((el) => el[1].code === zipCode) || [0])[0],
+            10
+        );
     }
 
-    const data = stateGEOJSON.features
-    .filter(el=>!!findID(el.properties.GEOID10))
-    .map(el=>{
-        const newEl = el
-        newEl.properties.ID_FOR_VECTOR_FEATURE = findID(el.properties.GEOID10)
-        return newEl
-    })
+    const newFeatures = features
+        .filter((el) => !!findID(el.properties.GEOID10))
+        .map((el) => {
+            const newEl = el;
+            newEl.properties.ID_FOR_VECTOR_FEATURE = findID(el.properties.GEOID10);
+            return newEl;
+        });
 
     const newGEOJSON = {
         type: "FeatureCollection",
-        features: data
-    }
+        features: newFeatures,
+    };
 
-    fs.writeFile('geojsonData/state.geo.json', JSON.stringify(newGEOJSON) ,()=>{})
+    fs.writeFileSync(
+        isFeature?`geojsonData/zipCode/${outputName}.json`:`geojsonData/${outputName}.json`,
+        JSON.stringify(isFeature ? newFeatures : newGEOJSON),
+        () => { }
+    );
 }
 
-function synhronizationCountyId() {
-    const countyDataJSON = JSON.parse(fs.readFileSync(path.join(__dirname , '..\\sourceIdData\\adm2.json'),"utf8")) 
-    const countyGEOJSON = JSON.parse(fs.readFileSync(path.join(__dirname , '..\\geojsonData\\county.geo.json'),"utf8")) 
+function synchronizationStateId() {
+    const stateGEOJSON = JSON.parse(
+        fs.readFileSync(
+            path.join(__dirname, "..\\geojsonData\\state.geo.json"),
+            "utf8"
+        )
+    );
+    const stateDataJSON = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "..\\sourceIdData\\adm1.json"), "utf8")
+    );
 
-    function findID (zipCode) {
-        const data = Object.entries(countyDataJSON.all) 
-        return parseInt( (data.find(el=>el[1].code===zipCode)||[0])[0] , 10 ) 
-    }
-
-    const data = countyGEOJSON.features
-    .filter(el=>!!findID(el.properties.GEOID10))
-    .map(el=>{
-        const newEl = el
-        newEl.properties.ID_FOR_VECTOR_FEATURE = findID(el.properties.GEOID10)
-        return newEl
-    })
-
-    const newGEOJSON = {
-        type: "FeatureCollection",
-        features: data
-    }
-
-    fs.writeFile('geojsonData/county.geo.json', JSON.stringify(newGEOJSON) ,()=>{})
+    synchronization(stateGEOJSON.features, stateDataJSON, "state.geo");
 }
 
-function synhronizationZipCodeId() {
-    const zipCodeDataJSON = JSON.parse(fs.readFileSync(path.join(__dirname , '..\\sourceIdData\\adm3.json'),"utf8")) 
+function synchronizationCountyId() {
+    const countyDataJSON = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "..\\sourceIdData\\adm2.json"), "utf8")
+    );
 
-    function findID (zipCode) {
-        const data = Object.entries(zipCodeDataJSON.all) 
-        return parseInt( (data.find(el=>el[1].code===zipCode)||[0])[0] , 10 ) 
-    }
+    const countyGEOJSON = JSON.parse(
+        fs.readFileSync(
+            path.join(__dirname, "..\\geojsonData\\county.geo.json"),
+            "utf8"
+        )
+    );
 
-    const itemsFile = fs.readdirSync(path.join(__dirname , '..\\geojsonData\\zcws\\'));
-
-    itemsFile.forEach((file,i)=>{
-        let str = file.substr(file.length-4)
-        if(str!=='json'){
-            return
-        }
-
-        console.log(`${i+1} Updating ${file}`)
-        const zipcodeWithEachStateGEOJSON = JSON.parse(fs.readFileSync(path.join(__dirname , `../geojsonData/zcws/${file}`),"utf8")) 
-
-        const data = zipcodeWithEachStateGEOJSON.features
-        .reduce((acc,el)=>{
-            const id = findID(el.properties.ZCTA5CE10)
-            if(!id){
-                return acc
-            }
-            const newEl = el
-            newEl.properties.ID_FOR_VECTOR_FEATURE = id
-            return [...acc,newEl]
-        },[])
-
-        const newGEOJSON = {
-            type: "FeatureCollection",
-            features: data
-        }
-
-        fs.writeFileSync(`geojsonData/zcws/${file}`, JSON.stringify(newGEOJSON) ,()=>{})
-
-    })
+    synchronization(countyGEOJSON.features, countyDataJSON, "county.geo");
 }
 
-console.log('Start synhronization StateId ')
-synhronizationStateId()
-console.log('Finish synhronization StateId ')
+function synchronizationZipCodeId() {
+    const zipDataJSON = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "..\\sourceIdData\\adm3.json"), "utf8")
+    );
 
-console.log('Start synhronization CountyId ')
-synhronizationCountyId()
-console.log('Finish synhronization CountyId ')
+    for (let i = 0; i < 33; i++) {
+        const zip = require(`../geojsonData/ziCode/zip.${i}.json`);
+        synchronization(zip, zipDataJSON, `zip.${i}`, true);
+        console.log(
+            `zip synchronization in progress ${Math.floor(((i + 1) / 33) * 100)} %`
+        );
+    }
+}
 
-console.log('Start synhronization ZipCodeId ')
-synhronizationZipCodeId()
-console.log('Finish synhronization ZipCodeId ')
+console.log("Start synchronization StateId ");
+synchronizationStateId();
+console.log("Finish synchronization StateId ");
+
+console.log("Start synchronization CountyId ");
+synchronizationCountyId();
+console.log("Finish synchronization CountyId ");
+
+console.log("Start synchronization ZipCodeId ");
+synchronizationZipCodeId();
+console.log("Finish synchronization ZipCodeId ");
+

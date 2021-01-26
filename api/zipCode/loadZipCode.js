@@ -15,16 +15,20 @@ const optionsVT = {
 		indexMaxPoints: 100000, // max number of points per tile in the index
 	}
 
-const itemsFile = fs.readdirSync(path.join(__dirname , '..\\..\\geojsonData\\zcws\\'));
+const itemsFile = fs.readdirSync(path.join(__dirname , '../../geojsonData/zipCode/'));
 
 const listZipCodeTiles = itemsFile.reduce((acc,el,i)=>{
 	let str = el.substr(el.length-4)
 
 	if(str==='json'){
 		console.log(i+1,"чтение файла",el);
-		const data = fs.readFileSync(path.join(__dirname , `..\\..\\geojsonData\\zcws\\${el}`), "utf8");
-				
-		const res = geojsonvt(JSON.parse(data),optionsVT);
+		const data = fs.readFileSync(path.join(__dirname , `../../geojsonData/zipCode/${el}`), "utf8");
+
+		const res = geojsonvt({
+			type: "FeatureCollection",
+			features: JSON.parse(data),
+		},optionsVT);
+		
 		acc =[ ...acc , res]
 	}
 	return acc
